@@ -4,8 +4,7 @@ main.o: main.c
 
 # linking
 all: main.o 
-	gcc -O3 -o main main.o 
-	objdump -d -S main >main_dis.s
+	gcc -o main main.o 
 	./main
 
 clean: 

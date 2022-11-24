@@ -4,9 +4,8 @@ main.o: main.c
 
 # linking
 all: main.o 
-	gcc -O3 -o main main.o 
-	objdump -d -S main >main_dis.s
-	./main
+	gcc -o main main.o 
+	./main data.txt data_copy.txt
 
 clean: 
 ifeq ($(OS),Windows_NT)
@@ -19,7 +18,7 @@ cleanup: clean
 ifeq ($(OS),Windows_NT)
 	del *.exe	
 else
-	rm -rf main
+	rm -rf main data_copy.txt
 endif
 
 	

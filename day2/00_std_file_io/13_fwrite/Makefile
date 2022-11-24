@@ -1,12 +1,16 @@
 # compile (preprocessing, compile, assembling)
-main.o: main.c
-	gcc -c main.c
+fwrite.o: fwrite.c
+	gcc -c fwrite.c
+
+fread.o: fread.c
+	gcc -c fread.c
 
 # linking
-all: main.o 
-	gcc -O3 -o main main.o 
-	objdump -d -S main >main_dis.s
-	./main
+all: fwrite.o fread.o
+	gcc -o fw fwrite.o 
+	gcc -o fr fread.o 
+	./fw data.txt 
+	./fr data.txt
 
 clean: 
 ifeq ($(OS),Windows_NT)
@@ -19,7 +23,7 @@ cleanup: clean
 ifeq ($(OS),Windows_NT)
 	del *.exe	
 else
-	rm -rf main
+	rm -rf fw fr
 endif
 
 	

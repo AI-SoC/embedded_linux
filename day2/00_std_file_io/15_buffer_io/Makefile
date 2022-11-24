@@ -1,12 +1,16 @@
 # compile (preprocessing, compile, assembling)
-main.o: main.c
-	gcc -c main.c
+setbuf.o: setbuf.c
+	gcc -c setbuf.c
+
+setvbuf.o: setvbuf.c
+	gcc -c setvbuf.c
 
 # linking
-all: main.o 
-	gcc -O3 -o main main.o 
-	objdump -d -S main >main_dis.s
-	./main
+all: setbuf.o setvbuf.o
+	gcc -o setbuf setbuf.o 
+	gcc -o setvbuf setvbuf.o 
+	./setbuf
+	./setvbuf
 
 clean: 
 ifeq ($(OS),Windows_NT)
@@ -19,7 +23,7 @@ cleanup: clean
 ifeq ($(OS),Windows_NT)
 	del *.exe	
 else
-	rm -rf main
+	rm -rf setbuf setvbuf
 endif
 
 	
