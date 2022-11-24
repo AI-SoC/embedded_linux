@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+#define F1 14
+
+int g1 = 0;
+extern void incr();
+
+
+int main(){
+        printf("a is %d\n",F1);
+
+        incr();
+        
+        printf("gi is %d/n",g1);
+        return 0;
+}
