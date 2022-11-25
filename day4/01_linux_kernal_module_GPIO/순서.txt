@@ -1,0 +1,8 @@
+$ make				
+$ sudo insmod led_module.ko		
+$ gcc –o main main.c
+$ sudo mknod /dev/ledtest c 245 0		
+$ sudo chmod 666 /dev/ledtest	 
+$ ./main 1 			:led on
+$ ./main 0 			:led off
+$ sudo rmmod led_module
