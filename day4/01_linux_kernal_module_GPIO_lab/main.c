@@ -19,8 +19,8 @@ void main(int argc, char** argv){
 		printf("gpio set: %s\n", argv[2]);
 		fd=open("/dev/ledtest", O_RDWR);
 		printf("fd: %d\n", fd);
-		fwrite(fd, argv[2], strlen(argv[2]));
-		fread(fd, buf, strlen(argv[1]));
+		write(fd, argv[2], strlen(argv[2]));
+		read(fd, buf, strlen(argv[1]));
 		memset(buf, 0, BUFSIZ);
 	}
 
@@ -28,9 +28,9 @@ void main(int argc, char** argv){
 	{
 		fd=open("/dev/ledtest", O_RDWR);
 		printf("fd: %d\n", fd);
-		fwrite(fd, "2", strlen("2"));
+		write(fd, "2", strlen("2"));
 		memset(buf, 0, BUFSIZ);
-		fread(fd, buf, strlen("2"));
+		read(fd, buf, strlen("2"));
 		printf("gpio read: %s \n", buf);
 	}
 	
